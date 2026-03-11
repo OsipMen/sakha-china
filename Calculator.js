@@ -1305,8 +1305,14 @@ function calculate() {
             tax = Math.max(0, profitBeforeTax) * 0.20 + vatAmount;
         }
         tax += finalPrice * extraTaxPct / 100;
-        
-        netProfit = profitBeforeTax - tax - aggregatorCommission;
+        // Исправленная логика:
+if (aggregatorMode !== 'none') {
+    // Вы агрегатор — комиссия это ВАШ ДОХОД
+    netProfit = profitBeforeTax - tax + aggregatorCommission;
+} else {
+    // Вы сами везёте/продаёте — без комиссии
+    netProfit = profitBeforeTax - tax;
+}
         margin = finalPrice > 0 ? (netProfit / finalPrice * 100) : 0;
         roi = hardCost > 0 ? (netProfit / hardCost * 100) : 0;
     }
@@ -1578,4 +1584,5 @@ document.addEventListener('keydown', function(e) {
     const currentPage = window.location.pathname.split('/').pop();
     if (e.key === 'ArrowRight' && currentPage === 'Calculator.html') window.location.href = 'Roadmap.html';
     if (e.key === 'ArrowLeft' && currentPage === 'Calculator.html') window.location.href = 'Risks.html';
+
 });
