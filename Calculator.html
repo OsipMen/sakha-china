@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sakha-China · Калькулятор</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Calculator.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">SAKHA<span>-CHINA</span></div>
+        <div class="subtitle">Захват мира</div>
+    </div>
+    <nav class="header-nav">
+        <a href="Business.html">📊 Бизнес-модель</a>
+        <a href="Operations.html">⚙️ Операции</a>
+        <a href="Platform.html">📱 Платформа</a>
+        <a href="Risks.html">⚠️ Риски</a>
+        <a href="Calculator.html" class="active">🧮 Калькулятор</a>
+        <a href="Roadmap.html">🗓️ Дорожная карта</a>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Section 1: Calculator Header -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-calculator"></i> КАЛЬКУЛЯТОР СЕБЕСТОИМОСТИ И ПРИБЫЛИ
+            <i class="fas fa-question-circle info-icon" data-info="calculatorOverview" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="card highlight-card">
+            <p class="essence-text">
+                <strong class="text-blue">Полнофункциональный калькулятор</strong> для расчёта полной себестоимости заказа из Китая. 
+                Поддержка всех площадок (Poizon, 1688, Taobao, Alibaba, заводы), гибкая настройка логистики, таможни, налогов. 
+                Два режима: «Хочу прибыль → рассчитать цену» и «Есть цена → рассчитать прибыль».
+            </p>
+        </div>
+
+        <div class="calc-controls">
+            <div class="control-group">
+                <label>
+                    Режим расчёта
+                    <i class="fas fa-question-circle info-icon" data-info="calcMode"></i>
+                </label>
+                <select id="calcMode" class="form-select" onchange="toggleCalcMode()">
+                    <option value="profit">🎯 Хочу прибыль → рассчитать цену</option>
+                    <option value="price">💰 Есть цена → рассчитать прибыль</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>
+                    Площадка закупки
+                    <i class="fas fa-question-circle info-icon" data-info="platform"></i>
+                </label>
+                <select id="platform" class="form-select" onchange="updatePlatformDefaults()">
+                    <option value="poizon">Poizon (Dewu) — оригиналы</option>
+                    <option value="1688">1688.com — опт</option>
+                    <option value="taobao">Taobao — розница</option>
+                    <option value="alibaba">Alibaba — B2B экспорт</option>
+                    <option value="factory">Прямой завод — OEM/ODM</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>Пресет</label>
+                <div class="preset-controls">
+                    <select id="presetSelect" class="form-select">
+                        <option value="custom">⚙️ Пользовательский</option>
+                        <option value="sneakers">👟 Кроссовки (средние)</option>
+                        <option value="clothing">👕 Одежда (лёгкая)</option>
+                        <option value="electronics">📱 Электроника</option>
+                        <option value="bulk">📦 Опт (50+ шт)</option>
+                    </select>
+                    <button class="btn btn-sm btn-outline" onclick="savePreset()">💾 Сохранить</button>
+                    <button class="btn btn-sm btn-outline" onclick="loadPreset()">📂 Загрузить</button>
+                    <button class="btn btn-sm btn-outline" onclick="resetCalculator()">🔄 Сброс</button>
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Экспорт</label>
+                <div class="export-controls">
+                    <button class="btn btn-sm btn-outline" onclick="exportPDF()">📄 PDF</button>
+                    <button class="btn btn-sm btn-outline" onclick="exportCSV()">📊 CSV</button>
+                    <button class="btn btn-sm btn-outline" onclick="copyLink()">🔗 Копировать</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Product & Currency -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-box"></i> ТОВАР И ВАЛЮТА
+            <i class="fas fa-question-circle info-icon" data-info="productSection" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-4">
+            <div class="input-group">
+                <label>Название товара</label>
+                <input type="text" id="productName" class="form-input" placeholder="Например: Nike Dunk Low" value="Nike Dunk Low Panda">
+            </div>
+            <div class="input-group">
+                <label>
+                    Цена в площадке (базовая валюта)
+                    <i class="fas fa-question-circle info-icon" data-info="basePrice"></i>
+                </label>
+                <input type="number" id="basePrice" class="form-input" value="393" step="0.01" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label>
+                    Базовая валюта
+                    <i class="fas fa-question-circle info-icon" data-info="baseCurrency"></i>
+                </label>
+                <select id="baseCurrency" class="form-select" onchange="calculate()">
+                    <option value="CNY">🇨🇳 CNY (юань)</option>
+                    <option value="USD">🇺🇸 USD (доллар)</option>
+                    <option value="EUR">🇪🇺 EUR (евро)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    Курс к RUB
+                    <i class="fas fa-question-circle info-icon" data-info="exchangeRate"></i>
+                </label>
+                <input type="number" id="exchangeRate" class="form-input" value="13.5" step="0.01" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label>
+                    Вес товара (кг)
+                    <i class="fas fa-question-circle info-icon" data-info="weight"></i>
+                </label>
+                <input type="number" id="weight" class="form-input" value="1.2" step="0.1" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label>
+                    Габариты (Д×Ш×В, см)
+                    <i class="fas fa-question-circle info-icon" data-info="dimensions"></i>
+                </label>
+                <input type="text" id="dimensions" class="form-input" placeholder="30×20×12" value="30×20×12">
+            </div>
+            <div class="input-group">
+                <label>
+                    Количество в заказе
+                    <i class="fas fa-question-circle info-icon" data-info="quantity"></i>
+                </label>
+                <input type="number" id="quantity" class="form-input" value="1" min="1" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label>
+                    Тип товара
+                    <i class="fas fa-question-circle info-icon" data-info="productType"></i>
+                </label>
+                <select id="productType" class="form-select" onchange="calculate()">
+                    <option value="shoes">👟 Обувь</option>
+                    <option value="clothing">👕 Одежда</option>
+                    <option value="electronics">📱 Электроника</option>
+                    <option value="accessories">🎒 Аксессуары</option>
+                    <option value="other">📦 Другое</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="calculation-preview">
+            <div class="preview-item">
+                <span class="preview-label">Цена в RUB:</span>
+                <span class="preview-value" id="previewPriceRUB">5 304 ₽</span>
+            </div>
+            <div class="preview-item">
+                <span class="preview-label">Общий вес:</span>
+                <span class="preview-value" id="previewWeight">1.2 кг</span>
+            </div>
+            <div class="preview-item">
+                <span class="preview-label">Объёмный вес:</span>
+                <span class="preview-value" id="previewVolumetric">1.8 кг</span>
+            </div>
+            <div class="preview-item">
+                <span class="preview-label">Расчётный вес:</span>
+                <span class="preview-value" id="previewChargeable">1.8 кг</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Platform Commissions -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-percentage"></i> КОМИССИИ ПЛОЩАДКИ
+            <i class="fas fa-question-circle info-icon" data-info="platformFees" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-3">
+            <div class="input-group">
+                <label>
+                    Комиссия площадки (%)
+                    <i class="fas fa-question-circle info-icon" data-info="platformFeePct"></i>
+                </label>
+                <input type="number" id="platformFeePct" class="form-input" value="6" step="0.1" oninput="calculate()">
+                <small class="form-hint" id="platformFeeHint">Poizon: 5% сервис + 1% транзакция</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Фиксированный сбор площадки
+                    <i class="fas fa-question-circle info-icon" data-info="platformFeeFix"></i>
+                </label>
+                <input type="number" id="platformFeeFix" class="form-input" value="20" step="1" oninput="calculate()">
+                <small class="form-hint" id="platformFeeFixHint">Poizon: 20 CNY за аутентификацию</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Валюта фикс. сбора
+                    <i class="fas fa-question-circle info-icon" data-info="platformFeeCurrency"></i>
+                </label>
+                <select id="platformFeeCurrency" class="form-select" onchange="calculate()">
+                    <option value="CNY">🇨🇳 CNY</option>
+                    <option value="USD">🇺🇸 USD</option>
+                    <option value="RUB">🇷🇺 RUB</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="platform-info" id="platformInfo">
+            <div class="info-row">
+                <span class="info-label">Официальный API:</span>
+                <span class="info-value" id="apiStatus">✅ Требуется WFOE</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Мин. заказ:</span>
+                <span class="info-value" id="minOrder">1 шт</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Срок обработки:</span>
+                <span class="info-value" id="processingTime">1-2 дня</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Гарантия оригинала:</span>
+                <span class="info-value" id="authGuarantee">✅ 100%</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Payment & Conversion -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-exchange-alt"></i> ОПЛАТА И КОНВЕРТАЦИЯ
+            <i class="fas fa-question-circle info-icon" data-info="paymentSection" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-3">
+            <div class="input-group">
+                <label>
+                    Комиссия конвертации RUB→CNY (%)
+                    <i class="fas fa-question-circle info-icon" data-info="convertFeePct"></i>
+                </label>
+                <input type="number" id="convertFeePct" class="form-input" value="2.5" step="0.1" oninput="calculate()">
+                <small class="form-hint">A7/Unix/банк: 2-4%</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Комиссия эквайринга (%)
+                    <i class="fas fa-question-circle info-icon" data-info="acquiringPct"></i>
+                </label>
+                <input type="number" id="acquiringPct" class="form-input" value="1.2" step="0.1" oninput="calculate()">
+                <small class="form-hint">СБП 0.7%, карты 1.5%</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Способ оплаты клиента
+                    <i class="fas fa-question-circle info-icon" data-info="paymentMethod"></i>
+                </label>
+                <select id="paymentMethod" class="form-select" onchange="calculate()">
+                    <option value="sbp">СБП (0.7%)</option>
+                    <option value="card">Карта РФ (1.5%)</option>
+                    <option value="mixed">Смешанный (1.2%)</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: China Logistics -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-truck"></i> ЛОГИСТИКА В КИТАЕ
+            <i class="fas fa-question-circle info-icon" data-info="chinaLogistics" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="logistics-grid">
+            <div class="input-group">
+                <label>
+                    Доставка до границы (площадка → Хэйхэ)
+                    <i class="fas fa-question-circle info-icon" data-info="chinaShippingCNY"></i>
+                </label>
+                <input type="number" id="chinaShippingCNY" class="form-input" value="30" step="1" oninput="calculate()">
+                <small class="form-hint">CNY за единицу</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Обработка на складе Хэйхэ
+                    <i class="fas fa-question-circle info-icon" data-info="warehouseHandling"></i>
+                </label>
+                <input type="number" id="warehouseHandling" class="form-input" value="520" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: приёмка, фото, упаковка</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Упаковка для экспорта
+                    <i class="fas fa-question-circle info-icon" data-info="exportPackaging"></i>
+                </label>
+                <input type="number" id="exportPackaging" class="form-input" value="50" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: коробка, стрейч, скотч</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Консолидация (если несколько товаров)
+                    <i class="fas fa-question-circle info-icon" data-info="consolidationFee"></i>
+                </label>
+                <input type="number" id="consolidationFee" class="form-input" value="0" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: объединение в одну посылку</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Страхование в Китае (%)
+                    <i class="fas fa-question-circle info-icon" data-info="chinaInsurancePct"></i>
+                </label>
+                <input type="number" id="chinaInsurancePct" class="form-input" value="0" step="0.1" oninput="calculate()">
+                <small class="form-hint">Опционально: 0-2%</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Прочие расходы в Китае
+                    <i class="fas fa-question-circle info-icon" data-info="chinaOther"></i>
+                </label>
+                <input type="number" id="chinaOther" class="form-input" value="0" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: документы, связь и т.д.</small>
+            </div>
+        </div>
+
+        <div class="logistics-summary">
+            <div class="summary-item">
+                <span class="summary-label">Итого логистика Китай:</span>
+                <span class="summary-value" id="chinaLogisticsTotal">975 ₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Border & Customs -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-passport"></i> ГРАНИЦА И ТАМОЖНЯ
+            <i class="fas fa-question-circle info-icon" data-info="customsSection" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-4">
+            <div class="input-group">
+                <label>
+                    Пересечение границы (МАПП)
+                    <i class="fas fa-question-circle info-icon" data-info="borderCrossing"></i>
+                </label>
+                <input type="number" id="borderCrossing" class="form-input" value="20" step="1" oninput="calculate()">
+                <small class="form-hint">RUB/кг: Хэйхэ→Благовещенск</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Экспортные документы (КНР)
+                    <i class="fas fa-question-circle info-icon" data-info="exportDocs"></i>
+                </label>
+                <input type="number" id="exportDocs" class="form-input" value="15" step="1" oninput="calculate()">
+                <small class="form-hint">RUB: доля от услуг брокера</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Таможенная пошлина (%)
+                    <i class="fas fa-question-circle info-icon" data-info="dutyPct"></i>
+                </label>
+                <input type="number" id="dutyPct" class="form-input" value="15" step="0.1" oninput="calculate()">
+                <small class="form-hint" id="dutyHint">Обувь: 15%, Одежда: 10-20%</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    НДС при импорте (%)
+                    <i class="fas fa-question-circle info-icon" data-info="vatPct"></i>
+                </label>
+                <select id="vatPct" class="form-select" onchange="calculate()">
+                    <option value="0">0% (льгота)</option>
+                    <option value="12">12% (льготная)</option>
+                    <option value="22" selected>22% (стандартная)</option>
+                </select>
+                <small class="form-hint">С 2025 года: 22% стандарт</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Таможенный сбор (фикс)
+                    <i class="fas fa-question-circle info-icon" data-info="customsFee"></i>
+                </label>
+                <input type="number" id="customsFee" class="form-input" value="500" step="100" oninput="calculate()">
+                <small class="form-hint">RUB: по ставкам ФТС</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Услуги таможенного брокера
+                    <i class="fas fa-question-circle info-icon" data-info="brokerFee"></i>
+                </label>
+                <input type="number" id="brokerFee" class="form-input" value="1500" step="100" oninput="calculate()">
+                <small class="form-hint">RUB: подача ДТ</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Маркировка «Честный ЗНАК»
+                    <i class="fas fa-question-circle info-icon" data-info="markingFee"></i>
+                </label>
+                <input type="number" id="markingFee" class="form-input" value="50" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: код + нанесение</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Сертификация (если требуется)
+                    <i class="fas fa-question-circle info-icon" data-info="certificationFee"></i>
+                </label>
+                <input type="number" id="certificationFee" class="form-input" value="0" step="100" oninput="calculate()">
+                <small class="form-hint">RUB: декларация/сертификат</small>
+            </div>
+        </div>
+
+        <div class="customs-calculation">
+            <h4>📐 Расчёт таможенных платежей</h4>
+            <div class="calc-row">
+                <span>Таможенная стоимость:</span>
+                <span class="calc-value" id="customsBase">5 709 ₽</span>
+            </div>
+            <div class="calc-row">
+                <span>Пошлина (<span id="dutyPctDisplay">15</span>%):</span>
+                <span class="calc-value" id="dutyAmount">856 ₽</span>
+            </div>
+            <div class="calc-row">
+                <span>База для НДС:</span>
+                <span class="calc-value" id="vatBase">6 565 ₽</span>
+            </div>
+            <div class="calc-row">
+                <span>НДС (<span id="vatPctDisplay">22</span>%):</span>
+                <span class="calc-value" id="vatAmount">1 444 ₽</span>
+            </div>
+            <div class="calc-row total">
+                <span>Итого таможня:</span>
+                <span class="calc-value" id="customsTotal">3 804 ₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Russia Logistics -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-shipping-fast"></i> ДОСТАВКА ПО РФ
+            <i class="fas fa-question-circle info-icon" data-info="ruLogistics" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-4">
+            <div class="input-group">
+                <label>
+                    Способ доставки
+                    <i class="fas fa-question-circle info-icon" data-info="ruShippingMethod"></i>
+                </label>
+                <select id="ruShippingMethod" class="form-select" onchange="calculate()">
+                    <option value="auto">🚛 Авто (сборная фура)</option>
+                    <option value="rail">🚂 Ж/Д контейнер</option>
+                    <option value="air">✈️ Авиа (срочно)</option>
+                    <option value="courier">🚚 Курьер (мелкий груз)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    Ставка доставки (₽/кг)
+                    <i class="fas fa-question-circle info-icon" data-info="ruShippingRate"></i>
+                </label>
+                <input type="number" id="ruShippingRate" class="form-input" value="150" step="10" oninput="calculate()">
+            </div>
+            <div class="input-group">
+                <label>
+                    Минимальная стоимость
+                    <i class="fas fa-question-circle info-icon" data-info="ruShippingMin"></i>
+                </label>
+                <input type="number" id="ruShippingMin" class="form-input" value="300" step="50" oninput="calculate()">
+                <small class="form-hint">RUB: если расчёт ниже</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Страховка груза (%)
+                    <i class="fas fa-question-circle info-icon" data-info="ruInsurancePct"></i>
+                </label>
+                <input type="number" id="ruInsurancePct" class="form-input" value="1" step="0.1" oninput="calculate()">
+                <small class="form-hint">Опционально: 0-3%</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Последняя миля (ПВЗ/курьер)
+                    <i class="fas fa-question-circle info-icon" data-info="lastMile"></i>
+                </label>
+                <input type="number" id="lastMile" class="form-input" value="150" step="25" oninput="calculate()">
+                <small class="form-hint">RUB: доставка до клиента</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Упаковка для выдачи
+                    <i class="fas fa-question-circle info-icon" data-info="finalPackaging"></i>
+                </label>
+                <input type="number" id="finalPackaging" class="form-input" value="30" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: пакет, наклейка</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Обработка возврата (резерв)
+                    <i class="fas fa-question-circle info-icon" data-info="returnReserve"></i>
+                </label>
+                <input type="number" id="returnReserve" class="form-input" value="10" step="5" oninput="calculate()">
+                <small class="form-hint">RUB: 5% от заказов</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Прочие расходы по РФ
+                    <i class="fas fa-question-circle info-icon" data-info="ruOther"></i>
+                </label>
+                <input type="number" id="ruOther" class="form-input" value="0" step="50" oninput="calculate()">
+                <small class="form-hint">RUB: хранение, связь</small>
+            </div>
+        </div>
+
+        <div class="logistics-summary">
+            <div class="summary-item">
+                <span class="summary-label">Итого доставка по РФ:</span>
+                <span class="summary-value" id="ruLogisticsTotal">313 ₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Operations & Taxes -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-cogs"></i> ОПЕРАЦИОННЫЕ РАСХОДЫ И НАЛОГИ
+            <i class="fas fa-question-circle info-icon" data-info="operationsSection" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="grid-4">
+            <div class="input-group">
+                <label>
+                    OPEX на заказ (доля)
+                    <i class="fas fa-question-circle info-icon" data-info="opex"></i>
+                </label>
+                <input type="number" id="opex" class="form-input" value="2635" step="100" oninput="calculate()">
+                <small class="form-hint">RUB: З/п, офис, IT, маркетинг</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Поддержка/возвраты (резерв)
+                    <i class="fas fa-question-circle info-icon" data-info="supportReserve"></i>
+                </label>
+                <input type="number" id="supportReserve" class="form-input" value="50" step="10" oninput="calculate()">
+                <small class="form-hint">RUB: на обработку претензий</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Система налогообложения
+                    <i class="fas fa-question-circle info-icon" data-info="taxSystem"></i>
+                </label>
+                <select id="taxSystem" class="form-select" onchange="calculate()">
+                    <option value="usn6">УСН 6% (Доходы)</option>
+                    <option value="usn15" selected>УСН 15% (Доходы-Расходы)</option>
+                    <option value="osno">ОСНО (НДС + Прибыль)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label>
+                    Доп. налог/сбор (%)
+                    <i class="fas fa-question-circle info-icon" data-info="extraTaxPct"></i>
+                </label>
+                <input type="number" id="extraTaxPct" class="form-input" value="0" step="0.1" oninput="calculate()">
+                <small class="form-hint">Опционально: торговый сбор и др.</small>
+            </div>
+        </div>
+
+        <div class="tax-info">
+            <div class="info-row">
+                <span class="info-label">НДС включается в расходы при УСН 15%:</span>
+                <span class="info-value" id="vatInExpenses">✅ Да</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">База для УСН:</span>
+                <span class="info-value" id="usnBase">Прибыль до налога</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Aggregator Commission -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-handshake"></i> КОМИССИЯ АГРЕГАТОРА (ВАША ПРИБЫЛЬ ОТ ПАРТНЁРОВ)
+            <i class="fas fa-question-circle info-icon" data-info="aggregatorCommission" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="card highlight-card" style="margin-bottom:16px;">
+            <p class="essence-text" style="font-size:13px;">
+                <strong class="text-blue">Что это:</strong> Ваш доход как владельца платформы Sakha-China, когда другие компании (карго, продавцы) используют вашу платформу для продажи своих услуг или товаров.
+                <br><br>
+                <strong>Пример:</strong> Карго-компания подключилась к вашему агрегатору. Клиент платит 17 500 ₽ за доставку. Карго получает 14 185 ₽ (себестоимость). <strong>ВАША КОМИССИЯ: 3 315 ₽</strong> — это ваша прибыль за предоставление платформы, трафика и инфраструктуры.
+            </p>
+        </div>
+        
+        <div class="grid-3">
+            <div class="input-group">
+                <label>
+                    Режим комиссии
+                    <i class="fas fa-question-circle info-icon" data-info="aggregatorMode"></i>
+                </label>
+                <select id="aggregatorMode" class="form-select" onchange="calculate()">
+                    <option value="none">❌ Не агрегатор (своя доставка)</option>
+                    <option value="fixed">🔢 Фиксированная (₽)</option>
+                    <option value="pct_delivery">📦 % от доставки</option>
+                    <option value="pct_order">🛒 % от заказа</option>
+                </select>
+            </div>
+            <div class="input-group" id="aggregatorValueGroup">
+                <label>
+                    Значение комиссии
+                    <i class="fas fa-question-circle info-icon" data-info="aggregatorValue"></i>
+                </label>
+                <input type="number" id="aggregatorValue" class="form-input" value="0" step="1" oninput="calculate()">
+                <small class="form-hint" id="aggregatorHint">RUB или % в зависимости от режима</small>
+            </div>
+            <div class="input-group">
+                <label>
+                    Выплата партнёру
+                    <i class="fas fa-question-circle info-icon" data-info="partnerPayout"></i>
+                </label>
+                <select id="partnerPayout" class="form-select" onchange="calculate()">
+                    <option value="after_delivery">После доставки</option>
+                    <option value="after_confirmation">После подтверждения клиентом</option>
+                    <option value="weekly">Еженедельно</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="aggregator-preview">
+            <div class="preview-item">
+                <span class="preview-label">Ваша комиссия (доход платформы):</span>
+                <span class="preview-value text-green" id="aggregatorCommission">0 ₽</span>
+            </div>
+            <div class="preview-item">
+                <span class="preview-label">Выплата партнёру:</span>
+                <span class="preview-value" id="partnerPayoutAmount">0 ₽</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 10: Target Parameters -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-bullseye"></i> ЦЕЛЕВЫЕ ПАРАМЕТРЫ
+            <i class="fas fa-question-circle info-icon" data-info="targetParams" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div id="targetProfitSection">
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>
+                        Режим целевого параметра
+                        <i class="fas fa-question-circle info-icon" data-info="targetMode"></i>
+                    </label>
+                    <div class="toggle-group">
+                        <label class="toggle-option">
+                            <input type="radio" name="targetMode" value="amount" checked onchange="toggleTargetMode()">
+                            <span>💰 Сумма (₽)</span>
+                        </label>
+                        <label class="toggle-option">
+                            <input type="radio" name="targetMode" value="pct" onchange="toggleTargetMode()">
+                            <span>📊 Процент (%)</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="input-group" id="targetAmountGroup">
+                    <label>
+                        Желаемая чистая прибыль
+                        <i class="fas fa-question-circle info-icon" data-info="targetProfit"></i>
+                    </label>
+                    <input type="number" id="targetProfit" class="form-input" value="3000" step="100" oninput="calculate()">
+                    <small class="form-hint">Сколько хотите заработать с одного заказа</small>
+                </div>
+                
+                <div class="input-group" id="targetPctGroup" style="display:none;">
+                    <label>
+                        Желаемая маржинальность
+                        <i class="fas fa-question-circle info-icon" data-info="targetMargin"></i>
+                    </label>
+                    <input type="number" id="targetMarginPct" class="form-input" value="15" step="0.1" oninput="calculate()">
+                    <small class="form-hint">Процент чистой прибыли от цены продажи</small>
+                </div>
+                
+                <div class="input-group">
+                    <label>
+                        Мин. маржинальность для предупреждения
+                        <i class="fas fa-question-circle info-icon" data-info="minMargin"></i>
+                    </label>
+                    <input type="number" id="minMarginPct" class="form-input" value="12" step="1" oninput="calculate()">
+                    <small class="form-hint">Если расчёт ниже — появится предупреждение</small>
+                </div>
+            </div>
+        </div>
+
+        <div id="targetPriceSection" style="display:none;">
+            <div class="grid-2">
+                <div class="input-group">
+                    <label>
+                        Цена для клиента (₽)
+                        <i class="fas fa-question-circle info-icon" data-info="targetPrice"></i>
+                    </label>
+                    <input type="number" id="targetPrice" class="form-input" value="17500" step="100" oninput="calculate()">
+                    <small class="form-hint">Финальная цена, которую видит клиент</small>
+                </div>
+                <div class="input-group">
+                    <label>
+                        Скидка для повторных клиентов (%)
+                        <i class="fas fa-question-circle info-icon" data-info="loyaltyDiscount"></i>
+                    </label>
+                    <input type="number" id="loyaltyDiscountPct" class="form-input" value="0" step="1" oninput="calculate()">
+                    <small class="form-hint">Опционально: программа лояльности</small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 11: Results -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-chart-bar"></i> РЕЗУЛЬТАТЫ РАСЧЁТА
+            <i class="fas fa-question-circle info-icon" data-info="resultsSection" style="margin-left:8px;cursor:pointer;"></i>
+        </h2>
+        
+        <div class="results-grid">
+            
+            <div class="result-card cost-breakdown">
+                <h4>📊 Структура себестоимости</h4>
+                <div class="breakdown-list">
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Закупка товара</span>
+                        <span class="breakdown-value" id="resProductCost">5 304 ₽</span>
+                        <span class="breakdown-pct" id="resProductPct">44.3%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Комиссия площадки</span>
+                        <span class="breakdown-value" id="resPlatformFee">594 ₽</span>
+                        <span class="breakdown-pct" id="resPlatformPct">5.0%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Конвертация RUB→CNY</span>
+                        <span class="breakdown-value" id="resConvertFee">147 ₽</span>
+                        <span class="breakdown-pct" id="resConvertPct">1.2%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Логистика Китай</span>
+                        <span class="breakdown-value" id="resChinaLogistics">975 ₽</span>
+                        <span class="breakdown-pct" id="resChinaLogisticsPct">8.1%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Пошлина (<span id="resDutyPct">15</span>%)</span>
+                        <span class="breakdown-value" id="resDuty">856 ₽</span>
+                        <span class="breakdown-pct" id="resDutyPctDisplay">7.2%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">НДС (<span id="resVatPct">22</span>%)</span>
+                        <span class="breakdown-value" id="resVat">1 444 ₽</span>
+                        <span class="breakdown-pct" id="resVatPctDisplay">12.1%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Брокер + маркировка</span>
+                        <span class="breakdown-value" id="resCustomsExtra">1 550 ₽</span>
+                        <span class="breakdown-pct" id="resCustomsExtraPct">12.9%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Доставка по РФ</span>
+                        <span class="breakdown-value" id="resRuLogistics">313 ₽</span>
+                        <span class="breakdown-pct" id="resRuLogisticsPct">2.6%</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">OPEX (доля)</span>
+                        <span class="breakdown-value" id="resOpex">2 635 ₽</span>
+                        <span class="breakdown-pct" id="resOpexPct">22.0%</span>
+                    </div>
+                    <div class="breakdown-item total">
+                        <span class="breakdown-label">Полная себестоимость</span>
+                        <span class="breakdown-value" id="resTotalCost">14 185 ₽</span>
+                        <span class="breakdown-pct">100%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-card financial-summary">
+                <h4>💰 Финансовый итог</h4>
+                <div class="summary-list">
+                    <div class="summary-row">
+                        <span class="summary-label">Цена для клиента:</span>
+                        <span class="summary-value highlight" id="resFinalPrice">17 500 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Эквайринг (<span id="resAcquiringPct">1.2</span>%):</span>
+                        <span class="summary-value" id="resAcquiring">210 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Комиссия агрегатора (ВАШ ДОХОД):</span>
+                        <span class="summary-value text-green" id="resAggregatorCommission">0 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Прибыль до налога:</span>
+                        <span class="summary-value" id="resProfitBeforeTax">3 315 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Налог (<span id="resTaxSystem">УСН 15%</span>):</span>
+                        <span class="summary-value" id="resTax">497 ₽</span>
+                    </div>
+                    <div class="summary-row divider">
+                        <span class="summary-label">ЧИСТАЯ ПРИБЫЛЬ:</span>
+                        <span class="summary-value highlight" id="resNetProfit">2 818 ₽</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Маржинальность:</span>
+                        <span class="summary-value" id="resMargin">16.2%</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">ROI (на вложенные 14 185 ₽):</span>
+                        <span class="summary-value" id="resRoi">19.9%</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Visual Cost Distribution -->
+        <div class="cost-distribution">
+            <h4>🥧 Распределение затрат</h4>
+            <div class="distribution-chart">
+                <div class="distribution-bar">
+                    <div class="distribution-segment product" style="width: 44.3%;" title="Закупка: 44.3%"></div>
+                    <div class="distribution-segment platform" style="width: 5.0%;" title="Комиссия площадки: 5.0%"></div>
+                    <div class="distribution-segment convert" style="width: 1.2%;" title="Конвертация: 1.2%"></div>
+                    <div class="distribution-segment china-logistics" style="width: 8.1%;" title="Логистика Китай: 8.1%"></div>
+                    <div class="distribution-segment duty" style="width: 7.2%;" title="Пошлина: 7.2%"></div>
+                    <div class="distribution-segment vat" style="width: 12.1%;" title="НДС: 12.1%"></div>
+                    <div class="distribution-segment customs-extra" style="width: 12.9%;" title="Брокер+маркировка: 12.9%"></div>
+                    <div class="distribution-segment ru-logistics" style="width: 2.6%;" title="Доставка РФ: 2.6%"></div>
+                    <div class="distribution-segment opex" style="width: 22.0%;" title="OPEX: 22.0%"></div>
+                </div>
+            </div>
+            <div class="distribution-legend">
+                <span class="legend-item"><span class="legend-color product"></span>Закупка</span>
+                <span class="legend-item"><span class="legend-color platform"></span>Площадка</span>
+                <span class="legend-item"><span class="legend-color convert"></span>Конвертация</span>
+                <span class="legend-item"><span class="legend-color china-logistics"></span>Логистика КНР</span>
+                <span class="legend-item"><span class="legend-color duty"></span>Пошлина</span>
+                <span class="legend-item"><span class="legend-color vat"></span>НДС</span>
+                <span class="legend-item"><span class="legend-color customs-extra"></span>Таможня</span>
+                <span class="legend-item"><span class="legend-color ru-logistics"></span>Доставка РФ</span>
+                <span class="legend-item"><span class="legend-color opex"></span>OPEX</span>
+            </div>
+        </div>
+
+        <!-- Warnings & Recommendations -->
+        <div class="calculation-warnings" id="calculationWarnings">
+            <!-- Dynamic warnings will be inserted here -->
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="calc-actions">
+            <button class="btn btn-primary" onclick="recalculate()">🔄 Пересчитать</button>
+            <button class="btn btn-outline" onclick="saveCalculation()">💾 Сохранить расчёт</button>
+            <button class="btn btn-outline" onclick="compareScenarios()">📊 Сравнить сценарии</button>
+            <button class="btn btn-outline" onclick="printResults()">🖨️ Печать</button>
+        </div>
+    </section>
+
+    <!-- Section 12: Scenario Comparison (Hidden by default) -->
+    <section class="section" id="comparisonSection" style="display: none;">
+        <h2 class="section-title"><i class="fas fa-balance-scale"></i> СРАВНЕНИЕ СЦЕНАРИЕВ</h2>
+        
+        <div class="comparison-controls">
+            <button class="btn btn-sm" onclick="addScenario()">➕ Добавить сценарий</button>
+            <button class="btn btn-sm btn-outline" onclick="resetComparison()">🗑️ Очистить</button>
+        </div>
+        
+        <div id="scenariosContainer">
+            <!-- Dynamic scenario cards will be inserted here -->
+        </div>
+    </section>
+
+    <!-- END MARK -->
+    <div class="end-mark">
+        <p>Osmart company</p>
+    </div>
+
+</main>
+
+<!-- INFO MODAL -->
+<div id="infoModal" class="info-modal" style="display:none;">
+    <div class="info-modal-content">
+        <div class="info-modal-header">
+            <h4 id="infoModalTitle">Пояснение</h4>
+            <button class="info-modal-close" onclick="closeInfoModal()">×</button>
+        </div>
+        <div class="info-modal-body" id="infoModalBody">
+            <!-- Текст пояснения подставляется динамически -->
+        </div>
+    </div>
+</div>
+
+<script src="Calculator.js"></script>
+</body>
+</html>

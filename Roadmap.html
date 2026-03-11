@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sakha-China · Дорожная карта</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Roadmap.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">SAKHA<span>-CHINA</span></div>
+        <div class="subtitle">Захват мира</div>
+    </div>
+    <nav class="header-nav">
+        <a href="Business.html">📊 Бизнес-модель</a>
+        <a href="Operations.html">⚙️ Операции</a>
+        <a href="Platform.html">📱 Платформа</a>
+        <a href="Risks.html">⚠️ Риски</a>
+        <a href="Calculator.html">🧮 Калькулятор</a>
+        <a href="Roadmap.html" class="active">🗓️ Дорожная карта</a>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Section 1: Roadmap Overview -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-map"></i> ДОРОЖНАЯ КАРТА ПРОЕКТА
+            <i class="fas fa-question-circle info-icon" data-info="roadmapOverview"></i>
+        </h2>
+        
+        <div class="card highlight-card">
+            <p class="essence-text">
+                <strong class="text-blue">Поэтапный план развития Sakha-China</strong> на 36 месяцев. 
+                Геймифицированная система прогресса: прохождение этапов, выполнение задач, получение достижений. 
+                От запуска MVP до международной экспансии.
+            </p>
+        </div>
+
+        <div class="roadmap-stats">
+            <div class="roadmap-stat">
+                <div class="roadmap-stat-value">4</div>
+                <div class="roadmap-stat-label">Этапа развития</div>
+            </div>
+            <div class="roadmap-stat">
+                <div class="roadmap-stat-value">24</div>
+                <div class="roadmap-stat-label">Ключевые задачи</div>
+            </div>
+            <div class="roadmap-stat">
+                <div class="roadmap-stat-value">36</div>
+                <div class="roadmap-stat-label">Месяцев плана</div>
+            </div>
+            <div class="roadmap-stat">
+                <div class="roadmap-stat-value" id="overallProgress">0%</div>
+                <div class="roadmap-stat-label">Общий прогресс</div>
+            </div>
+        </div>
+
+        <div class="progress-overview">
+            <div class="progress-label">Общий прогресс проекта</div>
+            <div class="progress-bar-large">
+                <div class="progress-fill-large" id="overallProgressBar" style="width: 0%;"></div>
+            </div>
+            <div class="progress-stages">
+                <div class="progress-stage" data-stage="1">
+                    <div class="stage-dot"></div>
+                    <div class="stage-label">Запуск</div>
+                </div>
+                <div class="progress-stage" data-stage="2">
+                    <div class="stage-dot"></div>
+                    <div class="stage-label">Агрегатор</div>
+                </div>
+                <div class="progress-stage" data-stage="3">
+                    <div class="stage-dot"></div>
+                    <div class="stage-label">Масштаб</div>
+                </div>
+                <div class="progress-stage" data-stage="4">
+                    <div class="stage-dot"></div>
+                    <div class="stage-label">Экспансия</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Phase 1 -->
+    <section class="section phase-section" id="phase1">
+        <div class="phase-header">
+            <div class="phase-badge phase-1">Этап 1</div>
+            <div class="phase-title">
+                <h3>🏁 ЗАПУСК И MVP</h3>
+                <p>Месяцы 1-4 · Бюджет: 2-3 млн ₽</p>
+            </div>
+            <div class="phase-status">
+                <span class="status-indicator" id="phase1Status">🔴 Не начато</span>
+            </div>
+        </div>
+
+        <div class="phase-objectives">
+            <h4><i class="fas fa-flag-checkered"></i> Цели этапа</h4>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="objective-content">
+                        <strong>Запуск платформы</strong>
+                        <p>MVP приложения с базовым функционалом</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-users"></i></div>
+                    <div class="objective-content">
+                        <strong>Первые клиенты</strong>
+                        <p>50-100 заказов/мес, отладка процессов</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-link"></i></div>
+                    <div class="objective-content">
+                        <strong>Интеграции</strong>
+                        <p>Poizon API через посредников, платёжные каналы</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-tasks">
+            <h4><i class="fas fa-tasks"></i> Задачи этапа</h4>
+            <div class="tasks-grid">
+                <div class="task-card" data-task="1.1" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-1" onchange="updateTaskStatus('1.1', 1)">
+                        <label for="task1-1"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Регистрация ООО и открытие счетов</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">2 недели</span>
+                        </div>
+                        <div class="task-description">ООО на УСН 15%, расчётный счёт, эквайринг, агентский договор</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>100 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="1.2" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-2" onchange="updateTaskStatus('1.2', 1)">
+                        <label for="task1-2"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Разработка MVP приложения</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">8 недель</span>
+                        </div>
+                        <div class="task-description">Flutter (iOS+Android), каталог, заказ, трекинг, личный кабинет</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>500 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="1.3" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-3" onchange="updateTaskStatus('1.3', 1)">
+                        <label for="task1-3"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Настройка склада в Хэйхэ</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">3 недели</span>
+                        </div>
+                        <div class="task-description">Аренда, оборудование, найм 2-3 сотрудников, процессы приёмки</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>300 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="1.4" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-4" onchange="updateTaskStatus('1.4', 1)">
+                        <label for="task1-4"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Подключение платёжного агента</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">2 недели</span>
+                        </div>
+                        <div class="task-description">A7/Unix/банк, конвертация RUB→CNY, тестовые переводы</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>200 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="1.5" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-5" onchange="updateTaskStatus('1.5', 1)">
+                        <label for="task1-5"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Тестовые заказы (20-30 шт)</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">4 недели</span>
+                        </div>
+                        <div class="task-description">Друзья, ранние пользователи, отладка логистики и таможни</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>400 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="1.6" data-phase="1">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task1-6" onchange="updateTaskStatus('1.6', 1)">
+                        <label for="task1-6"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Регистрация в «Честный ЗНАК»</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">1 неделя</span>
+                        </div>
+                        <div class="task-description">Получение кодов маркировки, интеграция с системой ЦРПТ</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>150 XP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-metrics">
+            <h4><i class="fas fa-chart-line"></i> Метрики успеха</h4>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-target">50 заказов/мес</div>
+                    <div class="metric-label">Объём заказов</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase1Orders" placeholder="Факт" onchange="updatePhaseMetric(1, 'orders')">
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">≤30 дней</div>
+                    <div class="metric-label">Срок доставки</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase1Delivery" placeholder="Факт" onchange="updatePhaseMetric(1, 'delivery')">
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">≤10%</div>
+                    <div class="metric-label">Возвраты/брак</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase1Returns" placeholder="Факт" onchange="updatePhaseMetric(1, 'returns')">
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">4.0+</div>
+                    <div class="metric-label">Рейтинг приложения</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase1Rating" placeholder="Факт" step="0.1" onchange="updatePhaseMetric(1, 'rating')">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-rewards">
+            <h4><i class="fas fa-trophy"></i> Награды этапа</h4>
+            <div class="rewards-grid">
+                <div class="reward-card locked" id="reward1-1">
+                    <div class="reward-icon"><i class="fas fa-medal"></i></div>
+                    <div class="reward-content">
+                        <strong>🎖️ Пионер</strong>
+                        <p>За успешный запуск MVP</p>
+                    </div>
+                    <div class="reward-xp">+1000 XP</div>
+                </div>
+                <div class="reward-card locked" id="reward1-2">
+                    <div class="reward-icon"><i class="fas fa-percent"></i></div>
+                    <div class="reward-content">
+                        <strong>📈 Безубыточность</strong>
+                        <p>Выход на окупаемость</p>
+                    </div>
+                    <div class="reward-xp">+500 XP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Phase 2 -->
+    <section class="section phase-section" id="phase2">
+        <div class="phase-header">
+            <div class="phase-badge phase-2">Этап 2</div>
+            <div class="phase-title">
+                <h3>🏆 АГРЕГАТОР И РОСТ</h3>
+                <p>Месяцы 5-8 · Бюджет: реинвестирование</p>
+            </div>
+            <div class="phase-status">
+                <span class="status-indicator" id="phase2Status">⚪ Заблокировано</span>
+            </div>
+        </div>
+
+        <div class="phase-objectives">
+            <h4><i class="fas fa-flag-checkered"></i> Цели этапа</h4>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-network-wired"></i></div>
+                    <div class="objective-content">
+                        <strong>Запуск агрегатора</strong>
+                        <p>Подключение 3-5 логистических партнёров</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-chart-up"></i></div>
+                    <div class="objective-content">
+                        <strong>Масштабирование</strong>
+                        <p>200-500 заказов/мес, выход на прибыль</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-robot"></i></div>
+                    <div class="objective-content">
+                        <strong>AI-ассистент</strong>
+                        <p>Базовая версия умного помощника</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-tasks">
+            <h4><i class="fas fa-tasks"></i> Задачи этапа</h4>
+            <div class="tasks-grid">
+                <div class="task-card" data-task="2.1" data-phase="2">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2-1" onchange="updateTaskStatus('2.1', 2)" disabled>
+                        <label for="task2-1"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Поиск и проверка логистических партнёров</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">3 недели</span>
+                        </div>
+                        <div class="task-description">3-5 карго-компаний, договоры, SLA, тестовые отправки</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>300 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="2.2" data-phase="2">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2-2" onchange="updateTaskStatus('2.2', 2)" disabled>
+                        <label for="task2-2"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Разработка калькулятора доставки</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">4 недели</span>
+                        </div>
+                        <div class="task-description">Сравнение вариантов, динамическое ценообразование, выбор исполнителя</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>400 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="2.3" data-phase="2">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2-3" onchange="updateTaskStatus('2.3', 2)" disabled>
+                        <label for="task2-3"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Запуск Telegram-бота</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">3 недели</span>
+                        </div>
+                        <div class="task-description">Быстрые заказы, уведомления, поддержка, реферальная программа</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>250 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="2.4" data-phase="2">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2-4" onchange="updateTaskStatus('2.4', 2)" disabled>
+                        <label for="task2-4"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Форма «Найти в Китае»</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">2 недели</span>
+                        </div>
+                        <div class="task-description">Кастомные заказы, поиск поставщиков, обработка заявок</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>200 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="2.5" data-phase="2">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task2-5" onchange="updateTaskStatus('2.5', 2)" disabled>
+                        <label for="task2-5"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Маркетинг роста</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">Постоянно</span>
+                        </div>
+                        <div class="task-description">Таргет, блогеры, реферальная программа, оптимизация воронки</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>350 XP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-metrics">
+            <h4><i class="fas fa-chart-line"></i> Метрики успеха</h4>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-target">200 заказов/мес</div>
+                    <div class="metric-label">Объём заказов</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase2Orders" placeholder="Факт" onchange="updatePhaseMetric(2, 'orders')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">20%</div>
+                    <div class="metric-label">Доля агрегатора</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase2Aggregator" placeholder="Факт" onchange="updatePhaseMetric(2, 'aggregator')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">≥12%</div>
+                    <div class="metric-label">Чистая маржа</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase2Margin" placeholder="Факт" onchange="updatePhaseMetric(2, 'margin')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">Достигнута</div>
+                    <div class="metric-label">Точка безубыточности</div>
+                    <div class="metric-input">
+                        <select id="phase2Breakeven" onchange="updatePhaseMetric(2, 'breakeven')" disabled>
+                            <option value="">Не выбрано</option>
+                            <option value="yes">✅ Да</option>
+                            <option value="no">❌ Нет</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-rewards">
+            <h4><i class="fas fa-trophy"></i> Награды этапа</h4>
+            <div class="rewards-grid">
+                <div class="reward-card locked" id="reward2-1">
+                    <div class="reward-icon"><i class="fas fa-medal"></i></div>
+                    <div class="reward-content">
+                        <strong>🎖️ Агрегатор</strong>
+                        <p>За запуск платформы агрегации</p>
+                    </div>
+                    <div class="reward-xp">+1500 XP</div>
+                </div>
+                <div class="reward-card locked" id="reward2-2">
+                    <div class="reward-icon"><i class="fas fa-users"></i></div>
+                    <div class="reward-content">
+                        <strong>👥 5 000 пользователей</strong>
+                        <p>За достижение аудитории</p>
+                    </div>
+                    <div class="reward-xp">+1000 XP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Phase 3 -->
+    <section class="section phase-section" id="phase3">
+        <div class="phase-header">
+            <div class="phase-badge phase-3">Этап 3</div>
+            <div class="phase-title">
+                <h3>🚀 МАСШТАБИРОВАНИЕ</h3>
+                <p>Месяцы 9-18 · Бюджет: прибыль + инвестиции</p>
+            </div>
+            <div class="phase-status">
+                <span class="status-indicator" id="phase3Status">⚪ Заблокировано</span>
+            </div>
+        </div>
+
+        <div class="phase-objectives">
+            <h4><i class="fas fa-flag-checkered"></i> Цели этапа</h4>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="objective-content">
+                        <strong>Гео-экспансия</strong>
+                        <p>5+ городов ДВ (Хабаровск, Владивосток...)</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-briefcase"></i></div>
+                    <div class="objective-content">
+                        <strong>B2B направление</strong>
+                        <p>Опт, контрактное производство, API для партнёров</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-brain"></i></div>
+                    <div class="objective-content">
+                        <strong>AI 2.0</strong>
+                        <p>Расширенные функции ИИ-ассистента</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-tasks">
+            <h4><i class="fas fa-tasks"></i> Задачи этапа</h4>
+            <div class="tasks-grid">
+                <div class="task-card" data-task="3.1" data-phase="3">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3-1" onchange="updateTaskStatus('3.1', 3)" disabled>
+                        <label for="task3-1"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Открытие регионов ДВ</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">6 месяцев</span>
+                        </div>
+                        <div class="task-description">Хабаровск, Владивосток, Благовещенск, локальная поддержка</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>600 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="3.2" data-phase="3">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3-2" onchange="updateTaskStatus('3.2', 3)" disabled>
+                        <label for="task3-2"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">B2B-портал</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">4 месяца</span>
+                        </div>
+                        <div class="task-description">Оптовые цены, персональный менеджер, отсрочка платежа</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>500 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="3.3" data-phase="3">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3-3" onchange="updateTaskStatus('3.3', 3)" disabled>
+                        <label for="task3-3"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Прямые API (Poizon, Alibaba)</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">3 месяца</span>
+                        </div>
+                        <div class="task-description">Регистрация WFOE, получение официальных API-ключей</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>700 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="3.4" data-phase="3">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3-4" onchange="updateTaskStatus('3.4', 3)" disabled>
+                        <label for="task3-4"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">AI-ассистент 2.0</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">4 месяца</span>
+                        </div>
+                        <div class="task-description">Поиск по фото, персональные рекомендации, прогнозирование</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>550 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="3.5" data-phase="3">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task3-5" onchange="updateTaskStatus('3.5', 3)" disabled>
+                        <label for="task3-5"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Премиум-подписка</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">2 месяца</span>
+                        </div>
+                        <div class="task-description">Приоритет, кэшбэк, персональный менеджер, эксклюзивы</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>300 XP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-metrics">
+            <h4><i class="fas fa-chart-line"></i> Метрики успеха</h4>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-target">500 заказов/мес</div>
+                    <div class="metric-label">Объём заказов</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase3Orders" placeholder="Факт" onchange="updatePhaseMetric(3, 'orders')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">5 городов</div>
+                    <div class="metric-label">География</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase3Cities" placeholder="Факт" onchange="updatePhaseMetric(3, 'cities')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">15%</div>
+                    <div class="metric-label">Доля B2B</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase3B2B" placeholder="Факт" onchange="updatePhaseMetric(3, 'b2b')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">≥16%</div>
+                    <div class="metric-label">Чистая маржа</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase3Margin" placeholder="Факт" onchange="updatePhaseMetric(3, 'margin')" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-rewards">
+            <h4><i class="fas fa-trophy"></i> Награды этапа</h4>
+            <div class="rewards-grid">
+                <div class="reward-card locked" id="reward3-1">
+                    <div class="reward-icon"><i class="fas fa-medal"></i></div>
+                    <div class="reward-content">
+                        <strong>🎖️ Лидер ДВ</strong>
+                        <p>За доминирование на рынке ДВ</p>
+                    </div>
+                    <div class="reward-xp">+2000 XP</div>
+                </div>
+                <div class="reward-card locked" id="reward3-2">
+                    <div class="reward-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="reward-content">
+                        <strong>🚀 1 млн ₽/мес прибыль</strong>
+                        <p>За выход на целевую прибыль</p>
+                    </div>
+                    <div class="reward-xp">+1500 XP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Phase 4 -->
+    <section class="section phase-section" id="phase4">
+        <div class="phase-header">
+            <div class="phase-badge phase-4">Этап 4</div>
+            <div class="phase-title">
+                <h3>🌍 ЭКСПАНСИЯ</h3>
+                <p>Месяцы 19-36 · Бюджет: прибыль + Series A</p>
+            </div>
+            <div class="phase-status">
+                <span class="status-indicator" id="phase4Status">⚪ Заблокировано</span>
+            </div>
+        </div>
+
+        <div class="phase-objectives">
+            <h4><i class="fas fa-flag-checkered"></i> Цели этапа</h4>
+            <div class="objectives-grid">
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-globe"></i></div>
+                    <div class="objective-content">
+                        <strong>Международная экспансия</strong>
+                        <p>15+ городов РФ + СНГ (Казахстан, Узбекистан...)</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-franchise"></i></div>
+                    <div class="objective-content">
+                        <strong>Франшиза</strong>
+                        <p>Продажа франшизы в другие регионы</p>
+                    </div>
+                </div>
+                <div class="objective-card">
+                    <div class="objective-icon"><i class="fas fa-handshake"></i></div>
+                    <div class="objective-content">
+                        <strong>Series A</strong>
+                        <p>Привлечение инвестиций $3-5 млн</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-tasks">
+            <h4><i class="fas fa-tasks"></i> Задачи этапа</h4>
+            <div class="tasks-grid">
+                <div class="task-card" data-task="4.1" data-phase="4">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task4-1" onchange="updateTaskStatus('4.1', 4)" disabled>
+                        <label for="task4-1"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Франшиза модели</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">6 месяцев</span>
+                        </div>
+                        <div class="task-description">Упаковка бизнес-модели, поиск франчайзи, обучение, роялти</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>1000 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="4.2" data-phase="4">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task4-2" onchange="updateTaskStatus('4.2', 4)" disabled>
+                        <label for="task4-2"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">SaaS для агрегаторов</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">6 месяцев</span>
+                        </div>
+                        <div class="task-description">White-label решение для других ниш (Турция, ОАЭ...)</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>800 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="4.3" data-phase="4">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task4-3" onchange="updateTaskStatus('4.3', 4)" disabled>
+                        <label for="task4-3"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Подготовка к Series A</div>
+                        <div class="task-meta">
+                            <span class="task-priority high">Высокий</span>
+                            <span class="task-duration">4 месяца</span>
+                        </div>
+                        <div class="task-description">Due diligence, pitch deck, встречи с инвесторами</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>1200 XP</span>
+                    </div>
+                </div>
+
+                <div class="task-card" data-task="4.4" data-phase="4">
+                    <div class="task-checkbox">
+                        <input type="checkbox" id="task4-4" onchange="updateTaskStatus('4.4', 4)" disabled>
+                        <label for="task4-4"></label>
+                    </div>
+                    <div class="task-content">
+                        <div class="task-title">Экосистема сервисов</div>
+                        <div class="task-meta">
+                            <span class="task-priority medium">Средний</span>
+                            <span class="task-duration">Постоянно</span>
+                        </div>
+                        <div class="task-description">Страхование, рассрочка, факторинг, маркетплейс поставщиков</div>
+                    </div>
+                    <div class="task-reward">
+                        <i class="fas fa-coins"></i>
+                        <span>900 XP</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-metrics">
+            <h4><i class="fas fa-chart-line"></i> Метрики успеха</h4>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <div class="metric-target">2000 заказов/мес</div>
+                    <div class="metric-label">Объём заказов</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase4Orders" placeholder="Факт" onchange="updatePhaseMetric(4, 'orders')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">15 городов</div>
+                    <div class="metric-label">География</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase4Cities" placeholder="Факт" onchange="updatePhaseMetric(4, 'cities')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">30%</div>
+                    <div class="metric-label">Не-логистические доходы</div>
+                    <div class="metric-input">
+                        <input type="number" id="phase4Other" placeholder="Факт" onchange="updatePhaseMetric(4, 'other')" disabled>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-target">$5-10 млн</div>
+                    <div class="metric-label">Оценка компании</div>
+                    <div class="metric-input">
+                        <input type="text" id="phase4Valuation" placeholder="Факт" onchange="updatePhaseMetric(4, 'valuation')" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="phase-rewards">
+            <h4><i class="fas fa-trophy"></i> Награды этапа</h4>
+            <div class="rewards-grid">
+                <div class="reward-card locked" id="reward4-1">
+                    <div class="reward-icon"><i class="fas fa-crown"></i></div>
+                    <div class="reward-content">
+                        <strong>👑 Империя</strong>
+                        <p>За создание международной платформы</p>
+                    </div>
+                    <div class="reward-xp">+5000 XP</div>
+                </div>
+                <div class="reward-card locked" id="reward4-2">
+                    <div class="reward-icon"><i class="fas fa-unicorn"></i></div>
+                    <div class="reward-content">
+                        <strong>🦄 Единорог</strong>
+                        <p>За оценку компании $10+ млн</p>
+                    </div>
+                    <div class="reward-xp">+3000 XP</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Achievements & Stats -->
+    <section class="section">
+        <h2 class="section-title">
+            <i class="fas fa-trophy"></i> ДОСТИЖЕНИЯ И СТАТИСТИКА
+            <i class="fas fa-question-circle info-icon" data-info="achievements"></i>
+        </h2>
+
+        <div class="achievements-grid">
+            <div class="achievement-card unlocked">
+                <div class="achievement-icon"><i class="fas fa-star"></i></div>
+                <div class="achievement-content">
+                    <strong>Новичок</strong>
+                    <p>За регистрацию в системе</p>
+                </div>
+                <div class="achievement-xp">+50 XP</div>
+            </div>
+
+            <div class="achievement-card locked">
+                <div class="achievement-icon"><i class="fas fa-rocket"></i></div>
+                <div class="achievement-content">
+                    <strong>Первый заказ</strong>
+                    <p>За обработку первого заказа</p>
+                </div>
+                <div class="achievement-xp">+100 XP</div>
+            </div>
+
+            <div class="achievement-card locked">
+                <div class="achievement-icon"><i class="fas fa-hundred"></i></div>
+                <div class="achievement-content">
+                    <strong>Сотня</strong>
+                    <p>За 100 обработанных заказов</p>
+                </div>
+                <div class="achievement-xp">+500 XP</div>
+            </div>
+
+            <div class="achievement-card locked">
+                <div class="achievement-icon"><i class="fas fa-thousand"></i></div>
+                <div class="achievement-content">
+                    <strong>Тысячник</strong>
+                    <p>За 1000 обработанных заказов</p>
+                </div>
+                <div class="achievement-xp">+2000 XP</div>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-coins"></i></div>
+                <div class="stat-value" id="totalXP">0</div>
+                <div class="stat-label">Всего XP</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                <div class="stat-value" id="completedTasks">0/24</div>
+                <div class="stat-label">Выполнено задач</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-medal"></i></div>
+                <div class="stat-value" id="earnedRewards">0/8</div>
+                <div class="stat-label">Получено наград</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="stat-value" id="unlockedAchievements">1/20</div>
+                <div class="stat-label">Достижения</div>
+            </div>
+        </div>
+
+        <div class="level-progress">
+            <div class="level-info">
+                <span class="level-label">Уровень</span>
+                <span class="level-value" id="currentLevel">1</span>
+                <span class="level-next">Следующий: <span id="nextLevelXP">500 XP</span></span>
+            </div>
+            <div class="level-bar">
+                <div class="level-fill" id="levelProgressBar" style="width: 0%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- END MARK -->
+    <div class="end-mark">
+        <p>Osmart company</p>
+    </div>
+
+</main>
+
+<script src="Roadmap.js"></script>
+</body>
+</html>

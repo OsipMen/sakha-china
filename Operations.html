@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sakha-China · Операционная модель</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Operations.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-left">
+        <div class="logo">SAKHA<span>-CHINA</span></div>
+        <div class="subtitle">Захват мира</div>
+    </div>
+    <nav class="header-nav">
+        <a href="Business.html">📊 Бизнес-модель</a>
+        <a href="Operations.html" class="active">⚙️ Операции</a>
+        <a href="Platform.html">📱 Платформа</a>
+        <a href="Risks.html">⚠️ Риски</a>
+        <a href="Calculator.html">🧮 Калькулятор</a>
+        <a href="Roadmap.html">🗓️ Дорожная карта</a>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+    <!-- Section 1: Operational Overview -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-cogs"></i> ОПЕРАЦИОННАЯ МОДЕЛЬ</h2>
+        
+        <div class="card highlight-card">
+            <p class="essence-text">
+                <strong class="text-blue">Полный цикл импорта:</strong> от поиска поставщика в Китае до вручения товара клиенту в РФ. 
+                Контроль на каждом этапе: выкуп товара → склад в Хэйхэ → таможня в Благовещенске → доставка в Якутск → выдача клиенту. 
+                Средний срок: 18-25 дней. Гарантия сохранности груза на всём пути.
+            </p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value">18-25</div>
+                <div class="stat-label">дней средний срок доставки</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">3</div>
+                <div class="stat-label">склада (Хэйхэ, Благовещенск, Якутск)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">трекинг на всех этапах</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">&lt;2%</div>
+                <div class="stat-label">потерь и брака</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: End-to-End Workflow -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-project-diagram"></i> СКВОЗНОЙ ПРОЦЕСС (END-TO-END)</h2>
+        
+        <div class="workflow-timeline">
+            
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h4>Оформление заказа</h4>
+                    <p>Клиент выбирает товар в каталоге или оставляет заявку на кастомный заказ. Оплата через эквайринг (СБП, карты). Деньги поступают на расчётный счёт ООО (РФ).</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 0-1 день</span>
+                        <span><i class="fas fa-check-circle"></i> Автоматически</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h4>Конвертация и оплата поставщику</h4>
+                    <p>Конвертация RUB → CNY через платёжного агента (A7, Unix, банк). Перевод на счёт WFOE (Китай). Оплата поставщику (Poizon, 1688, Taobao, Alibaba, завод).</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 1-2 дня</span>
+                        <span><i class="fas fa-exchange-alt"></i> Комиссия 2.5-4%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h4>Выкуп и проверка товара</h4>
+                    <p>Поставщик отправляет товар на склад в Хэйхэ. Poizon проводит аутентификацию (1-2 дня). Склад принимает товар, делает фотоотчёт, проверяет комплектацию.</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 2-4 дня</span>
+                        <span><i class="fas fa-camera"></i> Фотофиксация</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h4>Подготовка к экспорту</h4>
+                    <p>Упаковка для международной перевозки. Получение кодов маркировки «Честный ЗНАК». Нанесение кодов на товар. Оформление экспортных документов (КНР).</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 1-2 дня</span>
+                        <span><i class="fas fa-barcode"></i> Маркировка обязательна</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h4>Пересечение границы</h4>
+                    <p>Транспортировка через МАПП Хэйхэ-Благовещенск (авто/ж/д). Оформление экспортной декларации (Китай). Ввозная декларация (РФ). Помещение на СВХ.</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 1-2 дня</span>
+                        <span><i class="fas fa-truck"></i> Мост работает 24/7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h4>Таможенное оформление</h4>
+                    <p>Подача декларации на товары (ДТ). Уплата таможенных платежей (пошлина 15%, НДС 22%, сборы). Выпуск товара в свободное обращение. Получение ГТД.</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 1-3 дня</span>
+                        <span><i class="fas fa-file-contract"></i> ДТ + ГТД</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">7</div>
+                <div class="step-content">
+                    <h4>Доставка по РФ</h4>
+                    <p>Транспортировка Благовещенск → Якутск (авто/авиа). Сортировка в региональном хабе. Распределение по пунктам выдачи или курьерам.</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 7-10 дней</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Трекинг в реальном времени</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="workflow-step">
+                <div class="step-number">8</div>
+                <div class="step-content">
+                    <h4>Выдача клиенту</h4>
+                    <p>Уведомление клиента о готовности. Выдача в ПВЗ или курьером. Подтверждение получения. Закрытие заказа. Возможность возврата (14 дней).</p>
+                    <div class="step-meta">
+                        <span><i class="fas fa-clock"></i> 0-1 день</span>
+                        <span><i class="fas fa-smile"></i> Оценка качества</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 3: Warehouse Network -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-warehouse"></i> СКЛАДСКАЯ СЕТЬ</h2>
+        
+        <div class="warehouse-grid">
+            
+            <div class="warehouse-card">
+                <div class="warehouse-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Хэйхэ (Китай)</h4>
+                    <span class="warehouse-type">Приёмка и консолидация</span>
+                </div>
+                <div class="warehouse-body">
+                    <ul>
+                        <li><strong>Площадь:</strong> 100-200 м² (аренда)</li>
+                        <li><strong>Персонал:</strong> 2-3 сотрудника (приёмка, упаковка, координатор)</li>
+                        <li><strong>Функции:</strong>
+                            <ul class="sub-list">
+                                <li>Приём товара от поставщиков (Poizon, 1688, Taobao, заводы)</li>
+                                <li>Проверка комплектации и качества</li>
+                                <li>Фотофиксация для клиента</li>
+                                <li>Переупаковка для международной перевозки</li>
+                                <li>Нанесение кодов «Честный ЗНАК»</li>
+                                <li>Консолидация нескольких заказов в одну партию</li>
+                                <li>Подготовка экспортных документов</li>
+                            </ul>
+                        </li>
+                        <li><strong>Оборудование:</strong> Стеллажи, сканеры штрих-кодов, камеры, упаковочные станции</li>
+                        <li><strong>Стоимость:</strong> ~60 000 ₽/мес (аренда + ФОТ)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warehouse-card">
+                <div class="warehouse-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Благовещенск (РФ)</h4>
+                    <span class="warehouse-type">Таможенный склад</span>
+                </div>
+                <div class="warehouse-body">
+                    <ul>
+                        <li><strong>Площадь:</strong> СВХ (склад временного хранения) партнёра</li>
+                        <li><strong>Персонал:</strong> Таможенный брокер (аутсорс) + 1 координатор</li>
+                        <li><strong>Функции:</strong>
+                            <ul class="sub-list">
+                                <li>Временное хранение до выпуска таможней</li>
+                                <li>Подача декларации на товары (ДТ)</li>
+                                <li>Взаимодействие с таможней</li>
+                                <li>Уплата таможенных платежей</li>
+                                <li>Получение ГТД (грузовой таможенной декларации)</li>
+                                <li>Контроль выпуска товара</li>
+                                <li>Передача в транспортную компанию</li>
+                            </ul>
+                        </li>
+                        <li><strong>Партнёры:</strong> Аккредитованные таможенные брокеры</li>
+                        <li><strong>Стоимость:</strong> ~1 500 ₽/декларация + хранение</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="warehouse-card">
+                <div class="warehouse-header">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Якутск (РФ)</h4>
+                    <span class="warehouse-type">Распределительный центр</span>
+                </div>
+                <div class="warehouse-body">
+                    <ul>
+                        <li><strong>Площадь:</strong> 50-100 м² (офис + склад)</li>
+                        <li><strong>Персонал:</strong> 2-3 сотрудника (менеджер, кладовщик, курьер)</li>
+                        <li><strong>Функции:</strong>
+                            <ul class="sub-list">
+                                <li>Приём товара от транспортной компании</li>
+                                <li>Сортировка по заказам</li>
+                                <li>Хранение до выдачи (7 дней бесплатно)</li>
+                                <li>Выдача в ПВЗ (пункт выдачи заказов)</li>
+                                <li>Курьерская доставка по городу</li>
+                                <li>Обработка возвратов</li>
+                                <li>Клиентская поддержка (офлайн)</li>
+                            </ul>
+                        </li>
+                        <li><strong>Оборудование:</strong> Стеллажи, зона выдачи, примерочная, касса</li>
+                        <li><strong>Стоимость:</strong> ~150 000 ₽/мес (аренда + ФОТ + коммунальные)</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section 4: Logistics Partners -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-truck-moving"></i> ЛОГИСТИЧЕСКИЕ ПАРТНЁРЫ</h2>
+        
+        <div class="logistics-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Участок</th>
+                        <th>Способ</th>
+                        <th>Срок</th>
+                        <th>Стоимость</th>
+                        <th>Партнёры</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Poizon → Хэйхэ</strong></td>
+                        <td>Курьерская служба (КНР)</td>
+                        <td>2-4 дня</td>
+                        <td>30-50 CNY</td>
+                        <td>SF Express, ZTO, YTO</td>
+                    </tr>
+                    <tr>
+                        <td><strong>1688/Taobao → Хэйхэ</strong></td>
+                        <td>Внутренняя логистика (КНР)</td>
+                        <td>3-7 дней</td>
+                        <td>20-40 CNY</td>
+                        <td> Cainiao, местные перевозчики</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Алибаба/Завод → Хэйхэ</strong></td>
+                        <td>Грузовой транспорт (КНР)</td>
+                        <td>5-10 дней</td>
+                        <td>По договорённости</td>
+                        <td>Прямые контракты</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Хэйхэ → Благовещенск</strong></td>
+                        <td>Авто через МАПП</td>
+                        <td>1 день</td>
+                        <td>15-20 ₽/кг</td>
+                        <td>10+ транспортных компаний</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Благовещенск → Якутск</strong></td>
+                        <td>Авто (сборная фура)</td>
+                        <td>7-10 дней</td>
+                        <td>150-200 ₽/кг</td>
+                        <td>ПЭК, Деловые Линии, местные</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Благовещенск → Якутск</strong></td>
+                        <td>Авиа (срочно)</td>
+                        <td>2-3 дня</td>
+                        <td>400-600 ₽/кг</td>
+                        <td>Якутия, S7 Cargo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Якутск → Клиент</strong></td>
+                        <td>Курьер / ПВЗ</td>
+                        <td>0-1 день</td>
+                        <td>150-300 ₽</td>
+                        <td>Свои курьеры, СДЭК, Яндекс</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="logistics-notes">
+            <div class="note-box">
+                <h4><i class="fas fa-info-circle"></i> Агрегатор доставки</h4>
+                <p>Клиент видит несколько вариантов доставки с разной ценой и сроком. Выбор за клиентом. Комиссия агрегатора: 10-20% от стоимости доставки.</p>
+            </div>
+            <div class="note-box">
+                <h4><i class="fas fa-shield-alt"></i> Страхование грузов</h4>
+                <p>Опционально: 1-2% от стоимости товара. Покрывает потерю, повреждение, кражу. Партнёр: страховые компании РФ.</p>
+            </div>
+            <div class="note-box">
+                <h4><i class="fas fa-thermometer-half"></i> Сезонные ограничения</h4>
+                <p>Зима (ноябрь-март): возможны задержки из-за погодных условий. Резерв: +3-5 дней к сроку. Летом: стабильная работа.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Customs Clearance -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-passport"></i> ТАМОЖЕННОЕ ОФОРМЛЕНИЕ</h2>
+        
+        <div class="customs-grid">
+            <div class="customs-card">
+                <h4><i class="fas fa-file-invoice-dollar"></i> Таможенные платежи</h4>
+                <table class="customs-table">
+                    <tr>
+                        <td>Таможенная пошлина</td>
+                        <td>15% от таможенной стоимости</td>
+                    </tr>
+                    <tr>
+                        <td>НДС</td>
+                        <td>22% от (таможенная стоимость + пошлина)</td>
+                    </tr>
+                    <tr>
+                        <td>Таможенный сбор</td>
+                        <td>~500-1 500 ₽ (фиксированный)</td>
+                    </tr>
+                    <tr>
+                        <td>Услуги брокера</td>
+                        <td>~1 500-3 000 ₽/декларация</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="customs-card">
+                <h4><i class="fas fa-list-alt"></i> Необходимые документы</h4>
+                <ul>
+                    <li>Контракт с иностранным поставщиком</li>
+                    <li>Инвойс (счёт) от поставщика</li>
+                    <li>Упаковочный лист (Packing List)</li>
+                    <li>Транспортная накладная (CMR)</li>
+                    <li>Коды маркировки «Честный ЗНАК»</li>
+                    <li>Сертификаты соответствия (при необходимости)</li>
+                    <li>Платёжные документы (подтверждение оплаты)</li>
+                    <li>Доверенность на таможенного представителя</li>
+                </ul>
+            </div>
+
+            <div class="customs-card">
+                <h4><i class="fas fa-exclamation-triangle"></i> Критические моменты</h4>
+                <ul>
+                    <li>Таможенная стоимость не должна быть занижена (риск КТС)</li>
+                    <li>Код ТН ВЭД должен соответствовать товару</li>
+                    <li>Маркировка обязательна до выпуска с таможни</li>
+                    <li>НДС уплачивается до выпуска товара (кассовый разрыв)</li>
+                    <li>Срок выпуска: 1-3 рабочих дня (по закону до 4 часов)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Quality Control -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-clipboard-check"></i> КОНТРОЛЬ КАЧЕСТВА</h2>
+        
+        <div class="qc-process">
+            <div class="qc-stage">
+                <div class="qc-icon"><i class="fas fa-search"></i></div>
+                <h4>1. Проверка поставщика</h4>
+                <p>Верификация продавца на площадке. Отзывы, рейтинг, история продаж. Для заводов: аудит производства, сертификаты.</p>
+            </div>
+            <div class="qc-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="qc-stage">
+                <div class="qc-icon"><i class="fas fa-box-open"></i></div>
+                <h4>2. Приёмка на складе</h4>
+                <p>Визуальный осмотр, проверка комплектации, сверка с заказом. Фотофиксация со всех сторон.</p>
+            </div>
+            <div class="qc-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="qc-stage">
+                <div class="qc-icon"><i class="fas fa-certificate"></i></div>
+                <h4>3. Аутентификация (Poizon)</h4>
+                <p>Официальная проверка подлинности. Сертификат Poizon. Гарантия 100% оригинал.</p>
+            </div>
+            <div class="qc-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="qc-stage">
+                <div class="qc-icon"><i class="fas fa-shipping-fast"></i></div>
+                <h4>4. Контроль при отправке</h4>
+                <p>Проверка упаковки, надёжность крепления, страховка. Трекинг-номер выдаётся клиенту.</p>
+            </div>
+            <div class="qc-arrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="qc-stage">
+                <div class="qc-icon"><i class="fas fa-user-check"></i></div>
+                <h4>5. Подтверждение клиентом</h4>
+                <p>Клиент проверяет товар при получении. 14 дней на возврат. Оценка качества в приложении.</p>
+            </div>
+        </div>
+
+        <div class="qc-metrics">
+            <div class="qc-metric">
+                <div class="qc-metric-value">98%</div>
+                <div class="qc-metric-label">Товаров без брака</div>
+            </div>
+            <div class="qc-metric">
+                <div class="qc-metric-value">&lt;2%</div>
+                <div class="qc-metric-label">Возвраты</div>
+            </div>
+            <div class="qc-metric">
+                <div class="qc-metric-value">100%</div>
+                <div class="qc-metric-label">Фотофиксация</div>
+            </div>
+            <div class="qc-metric">
+                <div class="qc-metric-value">24 часа</div>
+                <div class="qc-metric-label">Реакция на претензии</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Technology Infrastructure -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-server"></i> ТЕХНОЛОГИЧЕСКАЯ ИНФРАСТРУКТУРА</h2>
+        
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-mobile-alt"></i></div>
+                <h4>Frontend</h4>
+                <p>Flutter (iOS + Android)</p>
+                <p>Единая кодовая база</p>
+                <p>Офлайн-режим</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-cloud"></i></div>
+                <h4>Backend</h4>
+                <p>Supabase (PostgreSQL)</p>
+                <p>Alibaba Cloud (Shanghai)</p>
+                <p>Edge Functions</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-plug"></i></div>
+                <h4>Интеграции</h4>
+                <p>Poizon API (официальный)</p>
+                <p>1688/Taobao (агрегаторы)</p>
+                <p>Платёжные шлюзы</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-database"></i></div>
+                <h4>Данные</h4>
+                <p>Кэширование (Redis)</p>
+                <p>Резервное копирование</p>
+                <p>Аналитика в реальном времени</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Безопасность</h4>
+                <p>HTTPS / TLS 1.3</p>
+                <p>Шифрование данных</p>
+                <p>2FA для админов</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon"><i class="fas fa-chart-line"></i></div>
+                <h4>Мониторинг</h4>
+                <p>Grafana + Prometheus</p>
+                <p>Uptime 99.5%</p>
+                <p>Алерты 24/7</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Order Fulfillment Metrics -->
+    <section class="section">
+        <h2 class="section-title"><i class="fas fa-tachometer-alt"></i> МЕТРИКИ ИСПОЛНЕНИЯ ЗАКАЗОВ</h2>
+        
+        <div class="metrics-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Метрика</th>
+                        <th>Цель (Год 1)</th>
+                        <th>Цель (Год 2)</th>
+                        <th>Цель (Год 3)</th>
+                        <th>Метод измерения</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Средний срок доставки</td>
+                        <td>≤25 дней</td>
+                        <td>≤22 дня</td>
+                        <td>≤20 дней</td>
+                        <td>Трекинг система</td>
+                    </tr>
+                    <tr>
+                        <td>Точность сроков (On-Time Delivery)</td>
+                        <td>≥85%</td>
+                        <td>≥90%</td>
+                        <td>≥95%</td>
+                        <td>Факт vs План</td>
+                    </tr>
+                    <tr>
+                        <td>Процент брака</td>
+                        <td>≤3%</td>
+                        <td>≤2%</td>
+                        <td>≤1%</td>
+                        <td>Возвраты / Рекламации</td>
+                    </tr>
+                    <tr>
+                        <td>Потери груза</td>
+                        <td>≤1%</td>
+                        <td>≤0.5%</td>
+                        <td>≤0.2%</td>
+                        <td>Страховые случаи</td>
+                    </tr>
+                    <tr>
+                        <td>Скорость обработки заказа</td>
+                        <td>≤24 часов</td>
+                        <td>≤12 часов</td>
+                        <td>≤6 часов</td>
+                        <td>Заказ → Оплата поставщику</td>
+                    </tr>
+                    <tr>
+                        <td>Удовлетворённость клиентов (CSAT)</td>
+                        <td>≥4.0</td>
+                        <td>≥4.5</td>
+                        <td>≥4.8</td>
+                        <td>Оценки в приложении</td>
+                    </tr>
+                    <tr>
+                        <td>NPS (лояльность)</td>
+                        <td>≥30</td>
+                        <td>≥45</td>
+                        <td>≥60</td>
+                        <td>Опросы клиентов</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- END MARK -->
+    <div class="end-mark">
+        <p>Osmart company</p>
+    </div>
+
+</main>
+
+<script src="Operations.js"></script>
+</body>
+</html>
